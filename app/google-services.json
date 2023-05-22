@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "464522022902",
+    "project_id": "gamevertest",
+    "storage_bucket": "gamevertest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464522022902:android:627d5f67b6c7614b8d01d7",
+        "android_client_info": {
+          "package_name": "com.example.gamevertest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464522022902-p3fsa3868uid0c6uue60834n3omk87qe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACExZeMrJeD157pe16lC-F1Lb6V14AGlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464522022902-p3fsa3868uid0c6uue60834n3omk87qe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
