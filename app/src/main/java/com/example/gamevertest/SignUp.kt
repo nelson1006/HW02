@@ -28,7 +28,7 @@ class SignUp : AppCompatActivity() {
         setContentView(binding.root)
         auth = Firebase.auth
 
-        //取得email and password
+        //get email and password
         binding.signup.setOnClickListener {
 
             val email = binding.enterEmail2.text.toString()

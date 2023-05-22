@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black"
+    >
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="368dp"
         android:text="登入"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,34 +23,57 @@
 
     <Button
         android:id="@+id/button_signup"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="452dp"
         android:text="註冊"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/buttondesign"
+        />
 
     <Button
         android:id="@+id/button_insert"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginTop="536dp"
         android:text="輸入分數"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/buttondesign"
+        />
 
     <Button
         android:id="@+id/button_get"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="608dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="620dp"
+        android:background="@drawable/buttondesign"
         android:text="查詢分數"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gamebar" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="361dp"
+        android:layout_height="541dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/bluefairyrunning"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

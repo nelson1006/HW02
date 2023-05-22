@@ -16,15 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_warning"
-        android:layout_width="355dp"
-        android:layout_height="205dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="368dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/signup"
         android:layout_width="wrap_content"

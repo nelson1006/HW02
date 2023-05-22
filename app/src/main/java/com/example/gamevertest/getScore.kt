@@ -16,9 +16,10 @@ class getScore : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_score)
 
-        //playerRecyclerView.layoutManager = LinearLayoutManager(this)
         playerRecyclerView = findViewById(R.id.showplayer)
         showLoading = findViewById(R.id.showLoading)
+
+
 
 
 
