@@ -18,6 +18,9 @@ class getScore : AppCompatActivity() {
 
         playerRecyclerView = findViewById(R.id.showplayer)
         showLoading = findViewById(R.id.showLoading)
+        playerRecyclerView.setHasFixedSize(true)
+
+
 
 
 

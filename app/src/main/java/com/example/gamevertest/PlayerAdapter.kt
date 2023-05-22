@@ -14,7 +14,8 @@ class PlayerAdapter(private val playerlist:ArrayList<PlayerModel>): RecyclerView
     }
 
     override fun onBindViewHolder(holder: PlayerAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val currentPlayer = playerlist[position]
+        holder.showPlayerName.text = currentPlayer.playerName
     }
 
 
