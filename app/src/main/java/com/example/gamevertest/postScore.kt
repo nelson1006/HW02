@@ -37,14 +37,14 @@ class postScore : AppCompatActivity() {
     private fun saveScoreData(){
 
         //取得暱稱和分數
-        val playername = enterName.text.toString()
-        val playerscore = enterScore.text.toString()
+        val playerName = enterName.text.toString()
+        val playerScore = enterScore.text.toString()
 
-        if (playername.isEmpty()){
+        if (playerName.isEmpty()){
             enterName.error = "請輸入暱稱"
         }
 
-        if (playerscore.isEmpty()){
+        if (playerScore.isEmpty()){
             enterScore.error = "請輸入分數"
         }
 
@@ -53,7 +53,7 @@ class postScore : AppCompatActivity() {
         val playerid = dbRef.push().key!!
 
         //抓取玩家暱稱和分數
-        val player = PlayerModel(playername, playerscore)
+        val player = PlayerModel(playerName, playerScore)
 
         //顯示分數是否輸入成功
         dbRef.child(playerid).setValue(player).addOnCompleteListener{
