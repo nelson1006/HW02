@@ -25,6 +25,7 @@ class postScore : AppCompatActivity() {
         enterScore = findViewById(R.id.editTextNumber)
         saveScore = findViewById(R.id.saveData)
 
+        //取得Firebase realtime database
         dbRef = FirebaseDatabase.getInstance().getReference("Score")
 
         saveScore.setOnClickListener{
