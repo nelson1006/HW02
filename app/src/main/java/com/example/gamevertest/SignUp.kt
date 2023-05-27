@@ -10,7 +10,6 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 import com.google.firebase.auth.FirebaseUser
 import com.example.gamevertest.databinding.ActivitySignUpBinding
 
@@ -23,10 +22,11 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+
+        val intent = Intent(this, MainActivity::class.java)
 
         //get email and password
         binding.signup.setOnClickListener {
@@ -48,20 +48,17 @@ class SignUp : AppCompatActivity() {
                     //判斷傳值是否成功
                     if (it.isSuccessful) {
                         Log.d("註冊", "註冊成功")
-                        finish()
+                        intent.putExtra("loginstatus", 1)
+                        startActivity(intent)
                     }
                     //顯示註冊失敗
                     else{
                         Log.w("註冊","註冊失敗", it.exception)
                         showMessage("註冊失敗")
                     }
-
                 }
         }
-
-
     }
-
     //註冊失敗副函式
     private fun showMessage(message: String) {
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -69,5 +66,4 @@ class SignUp : AppCompatActivity() {
         alertDialog.setPositiveButton("確定") { dialog, which -> }
         alertDialog.show()
     }
-
 }

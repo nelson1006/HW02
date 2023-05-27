@@ -59,22 +59,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gamebar" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="361dp"
-        android:layout_height="541dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/bluefairyrunning"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

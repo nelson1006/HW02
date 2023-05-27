@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 import com.google.firebase.auth.FirebaseUser
 import com.example.gamevertest.databinding.ActivityLogInBinding
 
@@ -24,7 +23,6 @@ class LogIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
 
-
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
@@ -32,12 +30,11 @@ class LogIn : AppCompatActivity() {
         val email = binding.enterEmail.text.toString()
         val password = binding.enterPassword.text.toString()
 
-
         //get email and password
         binding.login.setOnClickListener {
 
             if (email.isEmpty()) {
-                showMessage("請輸入電子郵件")
+                showMessage("請輸入信箱")
             } else if (password.isEmpty()) {
                 showMessage("請輸入密碼")
             } else {
@@ -58,6 +55,8 @@ class LogIn : AppCompatActivity() {
                     //Log.d("signInWithEmail:success")
                     println("---------signInWithEmail:success-----------")
                     val user = auth.currentUser
+                    intent.putExtra("loginstatus", 1)
+                    startActivity(intent)
                 } else {
                     it.exception?.message?.let {  }
                     println("---------error---------------")

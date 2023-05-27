@@ -1,16 +1,21 @@
 package com.example.gamevertest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.example.gamevertest.databinding.ActivityGetScoreBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class getScore : AppCompatActivity() {
 
@@ -18,43 +23,67 @@ class getScore : AppCompatActivity() {
     private lateinit var playerRecyclerView: RecyclerView
     private lateinit var playerList: ArrayList<PlayerModel>
     private lateinit var dbRef: DatabaseReference
+    private lateinit var binding: ActivityGetScoreBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_score)
 
-        playerRecyclerView = findViewById(R.id.showplayer)
-        playerRecyclerView.setHasFixedSize(true)
-        playerList = arrayListOf<PlayerModel>()
-        getPlayerScore()
+        val intent = Intent(this, MainActivity::class.java)
+        auth = Firebase.auth
+        binding = ActivityGetScoreBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val user = Firebase.auth.currentUser
+        val database = Firebase.database("https://gamevertest-default-rtdb.firebaseio.com/")
 
+        //playerRecyclerView = findViewById(R.id.showplayer)
+        //playerRecyclerView.setHasFixedSize(true)
+        //playerList = arrayListOf<PlayerModel>()
 
+        binding.readdataBtn.setOnClickListener {
+
+            val playerName : String = binding.etplayername.text.toString()
+            if  (playerName.isNotEmpty()){
+
+                getPlayerScore(playerName)
+
+            }else{
+
+                Toast.makeText(this,"PLease enter the Username",Toast.LENGTH_SHORT).show()
+
+            }
+        }
 
     }
 
-    private fun getPlayerScore(){
+    private fun getPlayerScore(playerName: String){
 
         //取得Firebase realtime database
-        dbRef = FirebaseDatabase.getInstance().getReference("score")
-        dbRef.addValueEventListener(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                playerList.clear()
-                if (snapshot.exists()){
-                    for (playerSnap in snapshot.children){
-                        val playerScore = playerSnap.getValue(PlayerModel::class.java)
-                        playerList.add(playerScore!!)
-                    }
-                    val mAdapter = PlayerAdapter(playerList)
-                    playerRecyclerView.adapter = mAdapter
+        val dbRef = FirebaseDatabase.getInstance().getReference("Level")
+        //lvRef = FirebaseDatabase.getInstance().getReference("Score")
+        dbRef.child(playerName).get().addOnSuccessListener {
 
-                    playerRecyclerView.visibility = View.VISIBLE
-                }
+            if (it.exists()){
+
+                val playername = it.child("playerName").value
+                val playerlevel = it.child("playerLevel").value
+                Toast.makeText(this,"Successfuly Read", Toast.LENGTH_SHORT).show()
+                binding.etplayername.text.clear()
+                binding.tvPlayerName.text = playername.toString()
+                binding.tvPlayerLevel.text = playerlevel.toString()
+                val playercurrentlevel = playerlevel.toString()
+
+            }else{
+
+                Toast.makeText(this,"Player Doesn't Exist", Toast.LENGTH_SHORT).show()
+
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+        }.addOnFailureListener{
 
-        })
+            Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
+
+        }
     }
 }
