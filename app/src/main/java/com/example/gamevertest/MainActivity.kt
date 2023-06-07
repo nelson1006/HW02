@@ -48,12 +48,11 @@ class MainActivity : AppCompatActivity() {
         insertData = findViewById(R.id.button_insert)
 
         insertData.setOnClickListener{
-            if(status==true){
+            //if(status==true){
                 startActivity(insert)
-            }else{
-                Toast.makeText(this,"請先註冊登入", Toast.LENGTH_LONG).show()
-            }
-
+            //}else{
+                //Toast.makeText(this,"請先註冊登入", Toast.LENGTH_LONG).show()
+            //}
         }
 
 

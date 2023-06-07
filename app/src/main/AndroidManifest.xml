@@ -12,6 +12,9 @@
         android:theme="@style/Theme.GameVerTest"
         tools:targetApi="31">
         <activity
+            android:name=".GameTest"
+            android:exported="false" />
+        <activity
             android:name=".Game5"
             android:exported="false" />
         <activity

@@ -3,6 +3,7 @@ package com.example.gamevertest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -26,11 +27,21 @@ class getScore : AppCompatActivity() {
     private lateinit var binding: ActivityGetScoreBinding
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_score)
 
-        val intent = Intent(this, MainActivity::class.java)
+        val btntomain = findViewById<Button>(R.id.btntomain)
+        val btntogame = findViewById<Button>(R.id.btntogame)
+        val intentmain = Intent(this, MainActivity::class.java)
+
+        btntomain.setOnClickListener {
+            startActivity(intentmain)
+        }
+
+        btntogame.visibility = View.INVISIBLE
+
         auth = Firebase.auth
         binding = ActivityGetScoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -47,6 +58,7 @@ class getScore : AppCompatActivity() {
             if  (playerName.isNotEmpty()){
 
                 getPlayerScore(playerName)
+                btntogame.visibility = View.VISIBLE
 
             }else{
 
@@ -72,7 +84,15 @@ class getScore : AppCompatActivity() {
                 binding.etplayername.text.clear()
                 binding.tvPlayerName.text = playername.toString()
                 binding.tvPlayerLevel.text = playerlevel.toString()
-                val playercurrentlevel = playerlevel.toString()
+
+                val btntogame = findViewById<Button>(R.id.btntogame)
+                val intentgame = Intent(this, GameTest::class.java)
+
+                btntogame.setOnClickListener {
+                    val playercurrentlevel = playerlevel.toString()
+                    intent.putExtra("currentlv",playercurrentlevel)
+                    startActivity(intentgame)
+                }
 
             }else{
 
@@ -85,5 +105,6 @@ class getScore : AppCompatActivity() {
             Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
 
         }
+
     }
 }
