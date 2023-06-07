@@ -79,19 +79,18 @@ class getScore : AppCompatActivity() {
             if (it.exists()){
 
                 val playername = it.child("playerName").value
-                val playerlevel = it.child("playerLevel").value
+                var playerlevel = it.child("playerLevel").value
                 Toast.makeText(this,"Successfuly Read", Toast.LENGTH_SHORT).show()
+                var playercurrentlevel = playerlevel.toString().toInt()
                 binding.etplayername.text.clear()
                 binding.tvPlayerName.text = playername.toString()
                 binding.tvPlayerLevel.text = playerlevel.toString()
-
                 val btntogame = findViewById<Button>(R.id.btntogame)
-                val intentgame = Intent(this, GameTest::class.java)
+                val intent = Intent(this, GameTest::class.java)
 
                 btntogame.setOnClickListener {
-                    val playercurrentlevel = playerlevel.toString()
-                    intent.putExtra("currentlv",playercurrentlevel)
-                    startActivity(intentgame)
+                    intent.putExtra("lv",playercurrentlevel)
+                    startActivity(intent)
                 }
 
             }else{

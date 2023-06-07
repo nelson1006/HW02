@@ -17,18 +17,20 @@ class GameTest : AppCompatActivity() {
         val btnbattle = findViewById<Button>(R.id.btnbattle)
         val charhpview = findViewById<TextView>(R.id.charhpview)
         val monsterhpview = findViewById<TextView>(R.id.monsterhpview)
+        val currentlv = findViewById<TextView>(R.id.textView3)
 
-        var lv: Int = intent.getIntExtra("currentlv", 0)
-        var basiccharhp : Int = 10
-        var basiccharatk: Int = 2
-        var basicmonsterhp: Int = 8
-        var basicmonsteratk: Int = 2
+        var lv: Int = intent.getIntExtra("lv", 0)
+        val basiccharhp : Int = 10
+        val basiccharatk: Int = 2
+        val basicmonsterhp: Int = 8
+        val basicmonsteratk: Int = 2
 
         var charhp = lv*2+basiccharhp
         var charatk = lv*2+basiccharatk
         var monsterhp = lv*2+basicmonsterhp
         var monsteratk = lv*2+basicmonsteratk
 
+        currentlv.text = lv.toString()
         charhpview.text = charhp.toString()
         monsterhpview.text = monsterhp.toString()
 
@@ -38,13 +40,11 @@ class GameTest : AppCompatActivity() {
             monsterhpview.text = monsterhp.toString()
             charhpview.text = charhp.toString()
 
-
             if (monsterhp <= 0 && charhp > 0) {
                 btnbattle.visibility = View.INVISIBLE
                 battleresult = 1
                 Toast.makeText(this, "勝利", Toast.LENGTH_SHORT).show()
             }
-
             if (monsterhp > 0 && charhp <= 0) {
                 btnbattle.visibility = View.INVISIBLE
                 battleresult = 2
