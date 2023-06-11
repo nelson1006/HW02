@@ -1,9 +1,12 @@
 package com.example.gamevertest
 
+import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -18,6 +21,7 @@ class GameTest : AppCompatActivity() {
         val charhpview = findViewById<TextView>(R.id.charhpview)
         val monsterhpview = findViewById<TextView>(R.id.monsterhpview)
         val currentlv = findViewById<TextView>(R.id.textView3)
+        val charimg = findViewById<ImageView>(R.id.imageView)
 
         var lv: Int = intent.getIntExtra("lv", 0)
         val basiccharhp : Int = 10
@@ -50,6 +54,10 @@ class GameTest : AppCompatActivity() {
                 battleresult = 2
                 Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        charimg.setOnClickListener {
+            startActivity(Intent(this, chardata::class.java))
         }
 
 
