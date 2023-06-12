@@ -86,7 +86,7 @@ class getScore : AppCompatActivity() {
                 binding.tvPlayerName.text = playername.toString()
                 binding.tvPlayerLevel.text = playerlevel.toString()
                 val btntogame = findViewById<Button>(R.id.btntogame)
-                val intent = Intent(this, GameTest::class.java)
+                val intent = Intent(this, chardata::class.java)
 
                 btntogame.setOnClickListener {
                     intent.putExtra("lv",playercurrentlevel)
