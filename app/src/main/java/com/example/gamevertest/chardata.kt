@@ -24,7 +24,7 @@ class chardata : AppCompatActivity() {
         }
 
         items.setOnClickListener {
-            startActivity(Intent(this,itemlist::class.java))
+            startActivity(Intent(this,itemchoose1::class.java))
         }
 
     }
